@@ -1,6 +1,8 @@
 from base import BasisSet
 import numpy as np
 import itertools as it
+import os
+
 
 class RamachandranBasis(BasisSet):
 
@@ -27,11 +29,12 @@ class RamachandranBasis(BasisSet):
         .. [5] Vitalini, F., Noe, F. and Keller, B. (2015):
         A basis set for peptides for the variational approach to conformational kinetics. (In review).
         """
-        
+
+        path_local = os.path.dirname(os.path.abspath(__file__))
         self.order = order
         self.ff = ff
         self.radiants = radiants
-        self.RBV = np.load('ResiduesEigenvectors/Ac_'+restype+'_NHMe.npz')
+        self.RBV = np.load(path_local+'/ResiduesEigenvectors/Ac_'+restype+'_NHMe.npz')
         self.RBV = self.RBV[ff][:,:order+1]
        
     def map(self, X):
