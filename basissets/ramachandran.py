@@ -1,7 +1,9 @@
-from base import BasisSet
+from __future__ import absolute_import
+from .base import BasisSet
 import numpy as np
 import itertools as it
 import os
+from six.moves import range
 
 
 class RamachandranBasis(BasisSet):
