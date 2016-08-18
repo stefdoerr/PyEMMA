@@ -148,8 +148,15 @@ def eig_corr(C0, Ct, epsilon=1e-6):
 
     """
     # check input
-    assert np.allclose(C0.T, C0), 'C0 is not a symmetric matrix'
-    assert np.allclose(Ct.T, Ct), 'Ct is not a symmetric matrix'
+    try:
+        assert np.allclose(C0.T, C0), 'C0 is not a symmetric matrix'
+        assert np.allclose(Ct.T, Ct), 'Ct is not a symmetric matrix'
+        assert False
+    except AssertionError:
+        import time
+        filename = "c0_ct_{}.npz".format(time.time())
+        np.savez_compressed(filename, c0=C0, ct=Ct)
+        print("dumped correlation matrices to ", filename)
 
     # compute the Eigenvalues of C0 using Schur factorization
     (S, V) = scipy.linalg.schur(C0)
