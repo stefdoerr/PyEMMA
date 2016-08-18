@@ -151,7 +151,6 @@ def eig_corr(C0, Ct, epsilon=1e-6):
     try:
         assert np.allclose(C0.T, C0), 'C0 is not a symmetric matrix'
         assert np.allclose(Ct.T, Ct), 'Ct is not a symmetric matrix'
-        assert False
     except AssertionError:
         import time
         filename = "c0_ct_{}.npz".format(time.time())
