@@ -127,10 +127,10 @@ def extensions():
                   extra_compile_args=['-std=c99'])
 
     covar_module = \
-        Extension('pyemma.coordinates.estimators.covar.covar_c.covartools',
-                  sources=['pyemma/coordinates/estimators/covar/covar_c/covartools.pyx',
-                           'pyemma/coordinates/estimators/covar/covar_c/_covartools.c'],
-                  include_dirs=['pyemma/coordinates/estimators/covar/covar_c/',
+        Extension('pyemma.ext.variational.estimators.covar_c.covartools',
+                  sources=['pyemma/ext/variational/estimators/covar_c/covartools.pyx',
+                           'pyemma/ext/variational/estimators/covar_c/_covartools.c'],
+                  include_dirs=['pyemma/ext/estimators/covar_c/',
                                 np_inc,
                                 ],
                   extra_compile_args=['-std=c99', '-O3'])
